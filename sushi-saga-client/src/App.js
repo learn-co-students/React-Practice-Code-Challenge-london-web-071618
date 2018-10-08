@@ -36,25 +36,31 @@ eatSushi = sushi => {
   if (this.isSushiEaten(sushi)) return
   // if (this.state.money - sushi.price <  0) return
   if (sushi.price > this.state.money) return
+
   this.setState({
     eatenSushis: [...this.state.eatenSushis, sushi],
-    money: this.state.money -sushi.price
+    money: this.state.money - sushi.price
   })
 }
 
 isSushiEaten = sushi => {
-  //this will return a boolean
+  //this will return a boolean(true or false)
   return this.state.eatenSushis.includes(sushi)
 }
 
   render() {
     return (
       <div className="app">
-        <SushiContainer  sushis={this.state.sushis.slice(this.state.currentIndex, this.state.currentIndex + 4)}
-        nextFourSushis= {this.nextFourSushis}
+        <SushiContainer
+        sushis={this.state.sushis.slice(this.state.currentIndex, this.state.currentIndex + 4)}
+        nextFourSushis={this.nextFourSushis}
         eatSushi={this.eatSushi}
-        isSushiEaten={this.isSushiEaten}/>
-        <Table money={this.state.money} eatenSushis={this.state.eatenSushis}/>
+        isSushiEaten={this.isSushiEaten}
+        />
+        <Table
+        money={this.state.money}
+        eatenSushis={this.state.eatenSushis}
+        />
       </div>
     );
   }
